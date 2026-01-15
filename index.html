@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliberduche Corporation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR */
+        header {
+            background-color: #1f4d2e;
+            padding: 15px 60px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: 700;
+            font-size: 22px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(
+                rgba(0,0,0,0.55),
+                rgba(0,0,0,0.55)
+            ),
+            url('https://images.unsplash.com/photo-1503387762-592deb58ef4e') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .hero .email {
+            margin-top: 20px;
+            color: #ffd700;
+            font-size: 14px;
+        }
+
+        /* SECTION */
+        section {
+            padding: 80px 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: 700;
+            color: #1f4d2e;
+            margin-bottom: 40px;
+            font-size: 26px;
+            text-transform: uppercase;
+        }
+
+        /* CARDS & BOXES */
+        .card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 1000px;
+            margin: auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            text-align: center;
+            color: #1f4d2e;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* SERVICES & MISSION GRID */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .info-box {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .box-header {
+            background-color: #1f4d2e;
+            color: #fff;
+            padding: 15px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .box-content {
+            padding: 25px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* PROJECTS SECTION */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom: 4px solid #1f4d2e;
+        }
+
+        .project-card h4 {
+            color: #2e5bff;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* RESOURCES SECTION */
+        .resource-item {
+            background: #fff;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .resource-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 25px;
+        }
+
+        .coord-label { color: #2e5bff; font-weight: 600; margin-bottom: 5px; }
+        .capacity-val { color: #1f4d2e; font-weight: 700; font-size: 20px; }
+
+        .total-capacity {
+            text-align: center;
+            font-weight: 700;
+            font-size: 22px;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .total-capacity span { color: #2e5bff; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            section { padding: 60px 30px; }
+            .grid-container, .resource-body { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 36px; }
+            header { padding: 15px 20px; }
+            nav a { margin-left: 10px; font-size: 12px; }
+
+            /* ORGANIZATIONAL & MANPOWER */
+        .manpower-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        /* TABLES */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #f8f8f8;
+            color: #1f4d2e;
+            text-align: left;
+            padding: 15px;
+            border-bottom: 2px solid #eee;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:nth-child(even) { background-color: #fafafa; }
+
+        /* PROCESS FLOW CARDS */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .process-box {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        /* CONTACT CARDS */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .contact-card {
+            background: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-card h4 { color: #1f4d2e; margin: 15px 0 10px; }
+
+        /* FOOTER */
+        footer {
+            background-color: #111;
+            color: #fff;
+            padding: 50px 80px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-logo h2 { color: #1f4d2e; margin-bottom: 15px; }
+        .footer-links h3 { margin-bottom: 20px; font-size: 18px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #ccc; text-decoration: none; font-size: 14px; }
+        
+        @media (max-width: 900px) {
+            .contact-grid, footer { grid-template-columns: 1fr; padding: 30px; }
+        }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav">
+        <div class="logo">CLIBERDUCHE</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#mission">Mission & Vision</a>
+            <a href="#projects">Projects</a>
+            <a href="#resources">Resources</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<div class="hero">
+    <div>
+        <h1>CLIBERDUCHE</h1>
+        <p>Foundations • Full-scale Construction Works</p>
+        <p>Site Development • Trust & Reliability</p>
+        <div class="email">📧 cliberduche.corp@yahoo.com</div>
+    </div>
+</div>
+
+<section id="about">
+    <h2 class="section-title">COMPANY PROFILE</h2>
+    <div class="card">
+        <h3>About Us</h3>
+        <p>The Company was established in 2018. CLIBERDUCHE CORPORATION was born out of the dream of a person to provide the best for his family without leaving the country anymore.</p>
+        <p>The company was officially registered with the Securities and Exchange Commission on November 28, 2018.</p>
+        <p><strong>CLIBERDUCHE</strong> stands for the surnames of the founders:<br>CLI – Imaco<br>BER – Bonilla<br>DUCHE – Pia Duche</p>
+    </div>
+</section>
+
+<section id="services">
+    <h2 class="section-title">OUR SERVICES</h2>
+    <div class="grid-container">
+        <div class="info-box">
+            <div class="box-header">Primary Functions</div>
+            <div class="box-content">
+                <ul style="list-style: none;">
+                    <li>✔ Backfill Sourcing / Land Sourcing</li>
+                    <li>✔ Land Development</li>
+                    <li>✔ Site Management</li>
+                    <li>✔ Equipment Leasing</li>
+                </ul>
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="box-header">Secondary Functions</div>
+            <div class="box-content">
+                <ul style="list-style: none;">
+                    <li>✔ Land Development</li>
+                    <li>✔ Project Management Consultation</li>
+                </ul>
+                <p style="margin-top:15px; font-style: italic;">CLIBERDUCHE CORPORATION provides high-quality backfill materials and land development services across CALABARZON and nearby areas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="mission">
+    <h2 class="section-title">MISSION & VISION</h2>
+    <div class="grid-container">
+        <div class="info-box">
+            <div class="box-header">🎯 MISSION</div>
+            <div class="box-content">
+                "We are a responsible land development company that provides high-quality backfill materials for land development projects and other infrastructures, including but not limited to sub-base materials like aggregates, mixed soil, and boulders. We support sustainable land development by adhering to the existing environmental regulations of the Philippines. We provide jobs for fellow Filipinos, which significantly contributes to boosting our country's economy. We are also keen to deliver excellent value to our partner communities, investors, employees, and other stakeholders."
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="box-header">👁 VISION</div>
+            <div class="box-content">
+                "Our vision is to be a highly respected, world-class natural resource land development company committed to adhering to international standards in land development operations and environmental conservation, sustainable projects that cover converting land development sites into other useful and economic projects in the future, thus converting land development projects to future commercial and housing projects."
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2 class="section-title">PROJECTS INFORMATION</h2>
+    <div class="card" style="margin-bottom: 40px;">
+        <p><strong>CLIBERDUCHE CORPORATION</strong> has a variety of projects - from small, medium to large commercial and industrial projects.</p>
+        <p>The company specializes in the supply backfilling materials, aggregates and other land resources that the client requires.</p>
+        <p>The company also engages in the land development which includes clearing, cutting and peeling, levelling and RCP, PVC pipe laying. It has been involved in building bridges, concrete roads, gutter, ripraps, easement, and slope protection that includes erosion prevention and liquefaction of soil.</p>
+    </div>
+
+    <div class="project-grid">
+        <div class="project-card">
+            <h4>MDI Project 2019</h4>
+            <p>Embankment, Storm Drainage, Road Network & Fencing</p>
+        </div>
+        <div class="project-card">
+            <h4>MDI - Mercator Holdings 2024</h4>
+            <p>Clearing, Grubbing, Temporary Fence Removal of Unsuitable Soil and Leveling</p>
+        </div>
+        <div class="project-card">
+            <h4>Silang, Cavite Project 2021</h4>
+            <p>Leveling and Compaction, Drainage, Road Network, Riprap, Bridge, Rectification (18.3 hectares)</p>
+        </div>
+    </div>
+</section>
+
+<section id="resources">
+    <h2 class="section-title">RESOURCES</h2>
+    
+    <div class="resource-item">
+        <div class="box-header">📍 LAND DEVELOPMENT SITE - 1 (CALAMBA CITY)</div>
+        <div class="resource-body">
+            <div>
+                <p class="coord-label">Site Coordinates</p>
+                <p><strong>Bearings:</strong> 14°08'32.0"N 121°09'37.0"E</p>
+                <p><strong>Address:</strong> 45R6+V4J Calamba, Laguna</p>
+                <p><strong>Location:</strong> S Luzon Expressway Toll Rd 4, Calamba, 4027 Laguna</p>
+            </div>
+            <div>
+                <p class="coord-label">Capacity</p>
+                <p class="capacity-val">APPROXIMATELY: 20 MILLION CU.M.</p>
+                <p style="font-size: 12px; color: #666;">Topographic plan and technical declaration available</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="resource-item">
+        <div class="box-header">📍 LAND DEVELOPMENT SITE - 2 (SILANG, CAVITE)</div>
+        <div class="resource-body">
+            <div>
+                <p class="coord-label">Site Coordinates</p>
+                <p><strong>Bearings:</strong> 14°15'02"N 120°59'12"E</p>
+                <p><strong>Address:</strong> Sabutan, 7X2P+6MF Silang, Cavite</p>
+                <p><strong>Location:</strong> 7X2P+7MW, Silang, Cavite</p>
+            </div>
+            <div>
+                <p class="coord-label">Capacity</p>
+                <p class="capacity-val">APPROXIMATELY: 2.2 MILLION CU.M.</p>
+                <p style="font-size: 12px; color: #666;">Topographic plan and technical declaration available</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="total-capacity">
+        Total Capacity: <span>22.2 Million Cubic Meters</span>
+    </div>
+</section>
+
+<section id="organization">
+    <h2 class="section-title">ORGANIZATIONAL STRUCTURE</h2>
+    <div class="manpower-card">
+        <h3>MANPOWER</h3>
+        <p>CLIBERDUCHE CORPORATION is composed of professionals with proven planning and construction management skills, and they are complemented by a highly skilled workforce.</p>
+        <p>The company is supported by its network of qualified professionals namely, Geodetic Engineers, Surveyors, Professional Heavy Equipment Operator, Field Spotters and Coordinators and the like.</p>
+    </div>
+
+    <div class="grid-container">
+        <div class="info-box">
+            <div class="box-header">GENERAL MANAGER</div>
+            <div class="box-content">
+                The General Manager is directly involved with Marketing since this is the core source of revenue for the company making sure that there are no hindrances that the client may encounter.
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="box-header">MARKETING MANAGER</div>
+            <div class="box-content">
+                The Marketing Manager is responsible for the steady influx of clients by utilizing different type of marketing strategies like social media platforms, information drive, and other effective techniques.
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="box-header">FINANCE OFFICER / PROCUREMENT</div>
+            <div class="box-content">
+                The Finance Officer is responsible for the Allocation and accounting for financial resources, check intelligent project cut and costs to maximize revenue.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="equipment">
+    <h2 class="section-title">EQUIPMENT & RESOURCES</h2>
+    <h3 style="text-align:center; margin-bottom:20px; color:#1f4d2e;">DUMP TRUCKS</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Model / Make</th>
+                    <th>Plate Number</th>
+                    <th>Capacity (kg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>FUSO / 2006</td><td>CAG5249</td><td>12,000</td></tr>
+                <tr><td>2</td><td>ISUZU / 2005</td><td>CAG2259</td><td>12,000</td></tr>
+                <tr><td>3</td><td>ISUZU / 2021</td><td>NFJ3086</td><td>10,000</td></tr>
+                <tr><td>4</td><td>MITSUBISHI / 2023</td><td>CBS4575</td><td>12,000</td></tr>
+                <tr><td>6</td><td>SINOTRUK / 2021</td><td>NGL9390</td><td>12,500</td></tr>
+                <tr><td>9</td><td>FUSO / 2021</td><td>NII8356</td><td>12,000</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 style="text-align:center; margin:40px 0 20px; color:#1f4d2e;">HEAVY EQUIPMENT</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Type of Equipment</th>
+                    <th>No. of Units</th>
+                    <th>Model</th>
+                    <th>Capacity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Compactor</td><td>1</td><td>Caterpillar 2016</td><td>10 tons</td></tr>
+                <tr><td>Bulldozer</td><td>1</td><td>Caterpillar D5H - 2007</td><td>N/A</td></tr>
+                <tr><td>Motor Grader</td><td>1</td><td>Mitsubishi - MG 130</td><td>N/A</td></tr>
+                <tr><td>Backhoe</td><td>1</td><td>Volvo - Excavator - 2012 - 290 E</td><td>1.2 cu.m.</td></tr>
+                <tr><td>Backhoe</td><td>1</td><td>Caterpillar - 2018 - 320 E</td><td>0.98 cu.m.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="suppliers">
+    <h2 class="section-title">LIST OF SUPPLIERS</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Address</th>
+                    <th>Contact No.</th>
+                    <th>Supplier Of</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>D.E. ABESAMIS BUILDERS, INC.</td><td>427 Maryland Compound, Mayapa, Calamba City</td><td>0968-853-0826</td><td>Aggregates</td></tr>
+                <tr><td>JEFF SAN LUIS ENTERPRISES</td><td>Sta. Cruz, Laguna</td><td>0917-529-2654</td><td>Heavy Equipments</td></tr>
+                <tr><td>CITICON</td><td>LIIP Ave, Biñan, 4024 Laguna, Philippines</td><td>0922-821-0268</td><td>Ready-mix concrete</td></tr>
+                <tr><td>Prea Enterprises</td><td>26 J. Lopez De Leon St., Parañaque</td><td>0998-325-6300</td><td>Air-conditioning & Office Supplies</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="process">
+    <h2 class="section-title">OUR PROCESS</h2>
+    <div class="process-grid">
+        <div class="process-box">
+            <div class="box-header">1. Specific Order & P.O.</div>
+            <div class="box-content">Customer requests specific material needed. A signed Purchase Order and down payment are required.</div>
+        </div>
+        <div class="process-box">
+            <div class="box-header">2. Source - Site of Materials</div>
+            <div class="box-content">The company determines the capacity needed to satisfy requirements in terms of volume and size.</div>
+        </div>
+        <div class="process-box">
+            <div class="box-header">4. Sampling & Laboratory Test</div>
+            <div class="box-content">A certification is obtained from a reputable Material Testing Company.</div>
+        </div>
+        <div class="process-box">
+            <div class="box-header">5. Site Dumping & Compaction</div>
+            <div class="box-content">Heavy machines spread materials and compact each layer of 0.40 meters.</div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">CONTACT INFORMATION</h2>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <h4>📍 Office Address</h4>
+            <p>Lot 3739 National Highway, 3/F CBD Building, Brgy. Pulo, Cabuyao City, Laguna, Philippines</p>
+        </div>
+        <div class="contact-card">
+            <h4>📞 Contact Numbers</h4>
+            <p>+63 49 546-6107<br>0967-302-6643</p>
+        </div>
+        <div class="contact-card">
+            <h4>✉️ E-mail</h4>
+            <p>cliberduche.corp@yahoo.com</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">
+        <h2>CLIBERDUCHE CORPORATION</h2>
+        <p>Foundations • Full-scale Construction Works<br>Site Development • Trust & Reliability</p>
+    </div>
+    <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>
